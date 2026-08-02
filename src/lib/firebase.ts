@@ -1,18 +1,25 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 
+const apiKey = (import.meta as any).env.VITE_FIREBASE_API_KEY;
+
 const firebaseConfig = {
-  apiKey: (import.meta as any).env.VITE_FIREBASE_API_KEY,
+  apiKey,
   authDomain: (import.meta as any).env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: (import.meta as any).env.VITE_FIREBASE_PROJECT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export const app = apiKey ? initializeApp(firebaseConfig) : null;
+export const auth = app ? getAuth(app) : null as any;
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = async () => {
+  if (!auth) {
+    console.error("Firebase no está configurado.");
+    alert("Error: Firebase no está configurado en las variables de entorno (.env).");
+    return null;
+  }
   try {
     const result = await signInWithPopup(auth, googleProvider);
     return result.user;
@@ -22,4 +29,7 @@ export const signInWithGoogle = async () => {
   }
 };
 
-export const signOutUser = () => signOut(auth);
+export const signOutUser = () => {
+  if (!auth) return Promise.resolve();
+  return signOut(auth);
+};

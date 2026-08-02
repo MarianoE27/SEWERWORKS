@@ -19,6 +19,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isGuest, setIsGuest] = useState(false);
 
   useEffect(() => {
+    if (!auth) {
+      console.warn("Firebase Auth no está inicializado. Habilitando modo invitado por defecto.");
+      setIsGuest(true);
+      setLoading(false);
+      return;
+    }
+    
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) setIsGuest(false);
