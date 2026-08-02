@@ -1,0 +1,7 @@
+{
+  "name": "SewerWorks Pro",
+  "description": "Plataforma web avanzada para modelación hidráulica y diseño de alcantarillado sanitario por gravedad según normas ENOHSA",
+  "defaultFile": "index.html",
+  "port": 3000,
+  "requestFramePermissions": []
+}

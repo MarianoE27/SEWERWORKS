@@ -1,0 +1,17 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+# Build & Logs
+*.log
+.eslintcache
+*.tsbuildinfo
+
+# Env & Temp
+.env*
+!.env.example
+.env
+.env.local
+.gemini/
+scratch/
