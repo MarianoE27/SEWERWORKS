@@ -564,5 +564,44 @@
   },
   "table": {
     "no_data": "No data available."
+  },
+  "auth": {
+    "title": "SewerWorks",
+    "subtitle": "Professional Hydraulic Design Engine",
+    "continue_with_google": "Continue with Google",
+    "continue_as_guest": "Continue as Guest",
+    "login_btn": "Log in",
+    "logout_btn": "Log out",
+    "footer": "© 2026 SewerWorks. Sanitary engineering software."
+  },
+  "patreon": {
+    "title": "Is SewerWorks useful to you?",
+    "subtitle": "Support the development of this tool",
+    "description": "If this software saves you time and improves your workflow, consider supporting its continued development.",
+    "cta_primary": "Support on Patreon",
+    "cta_secondary": "Continue working",
+    "dismiss_today": "Don't show today",
+    "thanks": "Thanks for using SewerWorks!"
+  },
+  "support": {
+    "title": "Contact & Support",
+    "type_label": "Report Type",
+    "type_bug": "Bug Report",
+    "type_suggestion": "Suggestion",
+    "type_contact": "General Inquiry",
+    "name_label": "Name",
+    "name_placeholder": "Your name",
+    "email_label": "Contact Email",
+    "email_placeholder": "you@email.com",
+    "message_label": "Description",
+    "message_placeholder": "Describe the issue or your inquiry in detail...",
+    "include_logs": "Include application logs (last 50)",
+    "preview_data": "View data to be sent",
+    "submit": "Send Report",
+    "submitting": "Sending...",
+    "success": "Report sent successfully!",
+    "error": "Error sending. Please try again.",
+    "cancel": "Cancel",
+    "min_chars": "Minimum 10 characters"
   }
 }

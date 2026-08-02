@@ -41,6 +41,9 @@ export interface UISlice {
   theme: 'dark' | 'light';
   language?: 'es' | 'en';
   unitSystem?: 'metric' | 'imperial';
+  isPatreonModalOpen: boolean;
+  isSupportModalOpen: boolean;
+  supportModalType: 'contact' | 'bug' | 'suggestion';
 
   // Actions
   setActiveMainTab: (tab: 'inicio' | 'dibujo' | 'analisis' | 'resultados' | 'ayuda') => void;
@@ -80,6 +83,9 @@ export interface UISlice {
   setTheme: (theme: 'dark' | 'light') => void;
   setLanguage?: (language: 'es' | 'en') => void;
   setUnitSystem?: (unitSystem: 'metric' | 'imperial') => void;
+  setIsPatreonModalOpen: (open: boolean) => void;
+  setIsSupportModalOpen: (open: boolean) => void;
+  setSupportModalType: (type: 'contact' | 'bug' | 'suggestion') => void;
 }
 
 function syncSelection(
@@ -142,6 +148,9 @@ export const createUISlice: StateCreator<AppState, [], [], UISlice> = (set) => (
   theme: 'dark',
   language: 'es',
   unitSystem: 'metric',
+  isPatreonModalOpen: false,
+  isSupportModalOpen: false,
+  supportModalType: 'contact',
 
   setActiveMainTab: (tab) => set({ activeMainTab: tab }),
   setIsRibbonOpen: (open) => set({ isRibbonOpen: open }),
@@ -171,6 +180,9 @@ export const createUISlice: StateCreator<AppState, [], [], UISlice> = (set) => (
   setTheme: (theme) => set({ theme }),
   setLanguage: (language) => set({ language }),
   setUnitSystem: (unitSystem) => set({ unitSystem }),
+  setIsPatreonModalOpen: (open) => set({ isPatreonModalOpen: open }),
+  setIsSupportModalOpen: (open) => set({ isSupportModalOpen: open }),
+  setSupportModalType: (type) => set({ supportModalType: type }),
 
   selectElement: (id, type) => set((state) => {
     if (!id) {

@@ -109,8 +109,9 @@ export interface DesignParameters {
   conduitRepository: DNTableEntry[]; // Repositorio de conductos
   // Colectores
   collectorMinDN: number; // DN mínimo para clasificar como colector (mm)
+  collectorMinCover: number; // Tapada mínima para clasificar como colector (m)
   collectorMaxCover: number; // Tapada máxima para clasificar como colector (m)
-  elevationProvider?: 'none' | 'opentopodata_srtm30m' | 'open_elevation';
+  elevationProvider?: 'none' | 'opentopodata_srtm30m' | 'open_elevation' | 'open_meteo';
   elevationProviderUrl?: string;
 }
 

@@ -6,6 +6,8 @@
 import React, { useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { useStore } from './store/useStore';
+import { useAuth } from './components/auth/AuthContext';
+import LoginScreen from './components/auth/LoginScreen';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -63,8 +65,18 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 }
 
 function AppInner() {
+  const { user, loading, isGuest } = useAuth();
   const hasData = useStore(s => Object.keys(s.nodes).length > 0 || Object.keys(s.conduits).length > 0);
   const theme = useStore(s => s.theme);
+  const setIsPatreonModalOpen = useStore(s => (s as any).setIsPatreonModalOpen);
+
+  useEffect(() => {
+    // Show Patreon modal on first startup if not dismissed today
+    const dismissedDate = localStorage.getItem('sw_patreon_dismissed_date');
+    if (dismissedDate !== new Date().toDateString()) {
+      setIsPatreonModalOpen(true);
+    }
+  }, [setIsPatreonModalOpen]);
 
   useEffect(() => {
     if (theme === 'light') {
@@ -83,6 +95,14 @@ function AppInner() {
     window.addEventListener('beforeunload', handler);
     return () => window.removeEventListener('beforeunload', handler);
   }, [hasData]);
+
+  if (loading) {
+    return null;
+  }
+
+  if (!user && !isGuest) {
+    return <LoginScreen />;
+  }
 
   return <Layout />;
 }

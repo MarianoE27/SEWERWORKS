@@ -6,8 +6,17 @@ import { exportConduitsCSV } from '../../lib/exportCSV';
 
 export function useExportHandlers() {
   const { nodes, conduits, parameters, addLog, openExportModal } = useStore();
+  const setIsPatreonModalOpen = useStore((s: any) => s.setIsPatreonModalOpen);
+
+  const triggerPatreon = () => {
+    const dismissed = localStorage.getItem('sw_patreon_dismissed_date');
+    if (dismissed !== new Date().toDateString()) {
+      setIsPatreonModalOpen(true);
+    }
+  };
 
   const handleExportProject = () => {
+    triggerPatreon();
     const projectData = { nodes, conduits, parameters, version: '1.0' };
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
     const downloadAnchorNode = document.createElement('a');
@@ -20,18 +29,22 @@ export function useExportHandlers() {
   };
 
   const handleExportDXF = () => {
+    triggerPatreon();
     openExportModal('dxf');
   };
 
   const handleExportLandXML = () => {
+    triggerPatreon();
     openExportModal('landxml');
   };
 
   const handleExportSCR = () => {
+    triggerPatreon();
     openExportModal('scr');
   };
 
   const handleExportCSV = () => {
+    triggerPatreon();
     // Intentar primero con el botón del DOM (si la tabla de resultados está abierta)
     const csvBtn = document.querySelector('[data-csv-btn="true"]') as HTMLButtonElement | null;
     if (csvBtn) {

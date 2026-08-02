@@ -321,6 +321,7 @@ export const createNetworkSlice: StateCreator<AppState, [], [], NetworkSlice> = 
       selectedElementType: null,
       history: pushHistory(state),
       future: [],
+      calculationVersion: 0,
     };
   }),
 
@@ -336,6 +337,7 @@ export const createNetworkSlice: StateCreator<AppState, [], [], NetworkSlice> = 
       consoleLogs: ['[Sistema] Proyecto limpiado. Listo para empezar.'],
       history: pushHistory(state),
       future: [],
+      calculationVersion: 0,
     };
   }),
 
@@ -359,13 +361,23 @@ export const createNetworkSlice: StateCreator<AppState, [], [], NetworkSlice> = 
 
       const logs = [...baseLog, ...detailedLogs, summaryLog, '[Cálculo] Simulación completada con éxito.'];
       scheduleSave({ nodes: result.nodes, conduits: result.conduits, parameters: state.parameters });
+      
+      const newCalcVersion = state.calculationVersion + 1;
+      if (newCalcVersion === 1 || newCalcVersion % 5 === 0) {
+        const dismissedDate = localStorage.getItem('sw_patreon_dismissed_date');
+        if (dismissedDate !== new Date().toDateString()) {
+          // get() cast to any to access UI slice actions safely if not fully typed
+          (get() as any).setIsPatreonModalOpen(true);
+        }
+      }
+
       return {
         nodes: result.nodes,
         conduits: result.conduits,
         consoleLogs: logs.length > MAX_CONSOLE_LOGS ? logs.slice(-MAX_CONSOLE_LOGS) : logs,
         history,
         future: [],
-        calculationVersion: state.calculationVersion + 1,
+        calculationVersion: newCalcVersion,
         isBottomPanelOpen: true,
       };
     } else {

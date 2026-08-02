@@ -71,8 +71,10 @@ export function RibbonAyuda({
           icon={LifeBuoy}
           label={t('ribbon.buttons.contacto')}
           onClick={() => {
-            window.location.href = "mailto:soporte@sewerworks.org";
-            addLog("[Ayuda] Abriendo cliente de correo para contactar a soporte.");
+            const s = useStore.getState() as any;
+            s.setSupportModalType('contact');
+            s.setIsSupportModalOpen(true);
+            addLog("[Ayuda] Abriendo formulario de contacto y soporte.");
           }}
           subtitle={t('ribbon.subtitles.contacto')}
         />
@@ -80,8 +82,10 @@ export function RibbonAyuda({
           icon={Bug}
           label={t('ribbon.buttons.reportar')}
           onClick={() => {
-            window.open("https://github.com", "_blank");
-            addLog("[Ayuda] Abriendo página para reportar un error.");
+            const s = useStore.getState() as any;
+            s.setSupportModalType('bug');
+            s.setIsSupportModalOpen(true);
+            addLog("[Ayuda] Abriendo formulario para reportar un error.");
           }}
           subtitle={t('ribbon.subtitles.reportar')}
         />

@@ -564,5 +564,44 @@
   },
   "table": {
     "no_data": "No hay datos disponibles."
+  },
+  "auth": {
+    "title": "SewerWorks",
+    "subtitle": "Motor de Diseño Hidráulico Profesional",
+    "continue_with_google": "Continuar con Google",
+    "continue_as_guest": "Continuar como Invitado",
+    "login_btn": "Iniciar sesión",
+    "logout_btn": "Cerrar sesión",
+    "footer": "© 2026 SewerWorks. Software de ingeniería sanitaria."
+  },
+  "patreon": {
+    "title": "¿Te resultó útil SewerWorks?",
+    "subtitle": "Apoya el desarrollo de esta herramienta",
+    "description": "Si este software te ahorra tiempo y mejora tu flujo de trabajo, considerá apoyar su desarrollo continuo.",
+    "cta_primary": "Apoyar en Patreon",
+    "cta_secondary": "Continuar trabajando",
+    "dismiss_today": "No mostrar hoy",
+    "thanks": "¡Gracias por usar SewerWorks!"
+  },
+  "support": {
+    "title": "Contacto y Soporte",
+    "type_label": "Tipo de reporte",
+    "type_bug": "Reporte de Bug",
+    "type_suggestion": "Sugerencia",
+    "type_contact": "Consulta General",
+    "name_label": "Nombre",
+    "name_placeholder": "Tu nombre",
+    "email_label": "Email de contacto",
+    "email_placeholder": "tu@email.com",
+    "message_label": "Descripción",
+    "message_placeholder": "Describí el problema o tu consulta en detalle...",
+    "include_logs": "Incluir logs de la aplicación (últimos 50)",
+    "preview_data": "Ver datos que se enviarán",
+    "submit": "Enviar Reporte",
+    "submitting": "Enviando...",
+    "success": "¡Reporte enviado exitosamente!",
+    "error": "Error al enviar. Intente de nuevo.",
+    "cancel": "Cancelar",
+    "min_chars": "Mínimo 10 caracteres"
   }
 }

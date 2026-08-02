@@ -3,6 +3,7 @@ import { useStore } from '../store/useStore';
 import { Undo2, Redo2, Sun, Moon, FileJson, FolderOpen, Trash2, ChevronDown, Download, FileCode2, Terminal, Languages, PanelTopClose, PanelTopOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useExportHandlers } from './ribbon/useExportHandlers';
+import UserMenu from './auth/UserMenu';
 
 export function Header() {
   const { t, i18n } = useTranslation();
@@ -154,6 +155,9 @@ export function Header() {
 
       {/* Right Controls */}
       <div className="ml-auto flex items-center space-x-3 text-text-secondary">
+        <UserMenu />
+        <div className="w-px h-4 bg-border-subtle"></div>
+        
         {/* Ribbon Toggle Button */}
         <button
           type="button"

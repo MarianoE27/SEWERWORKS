@@ -27,6 +27,8 @@ import { ProfileContainer } from './profile/ProfileContainer';
 import { ExportModal } from './ExportModal';
 import { BarChart4, TrendingUp } from 'lucide-react';
 import { useGlobalShortcuts } from '../hooks/useGlobalShortcuts';
+import { PatreonModal } from './PatreonModal';
+import { SupportModal } from './SupportModal';
 
 export function Layout() {
   const { t } = useTranslation();
@@ -207,6 +209,8 @@ export function Layout() {
             <ProjectionPanel isOpen={isProjectionPanelOpen} onClose={() => setProjectionPanelOpen(false)} />
             {isProjectInfoOpen && <ProjectInfoModal onClose={() => setProjectInfoOpen(false)} />}
             <ExportModal />
+            <PatreonModal />
+            <SupportModal />
           </div>
           <AnimatePresence>
             {isBottomPanelOpen && <ConsolePanel />}
